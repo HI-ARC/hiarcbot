@@ -17,3 +17,4 @@
 eggs
 venv
 __pycache__/
+slack_config.py
