@@ -43,11 +43,11 @@ def get_weather_summary():
 
     weather_report = ""
     summary = json.loads(r.text)['weather']['summary'][0]
-    weather_report += "[오늘의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n" % \
+    weather_report += "[오늘의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n\n" % \
                       (weather_status_with_emoji(summary['today']['sky']['code']),
                        summary['today']['temperature']['tmin'], summary['today']['temperature']['tmax'])
 
-    weather_report += "[내일의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n" % \
+    weather_report += "[내일의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n\n" % \
                       (weather_status_with_emoji(summary['tomorrow']['sky']['code']),
                        summary['tomorrow']['temperature']['tmin'], summary['tomorrow']['temperature']['tmax'])
 
