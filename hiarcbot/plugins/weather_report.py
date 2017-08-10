@@ -2,7 +2,7 @@ import os
 import json
 import requests
 
-from slackbot.bot import respont_to
+from slackbot.bot import respond_to
 
 from hiarcbot import bot, sched
 
