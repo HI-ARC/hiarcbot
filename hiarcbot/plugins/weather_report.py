@@ -2,6 +2,8 @@ import os
 import json
 import requests
 
+from slackbot.bot import respont_to
+
 from hiarcbot import bot, sched
 
 # 여의도 관측소
