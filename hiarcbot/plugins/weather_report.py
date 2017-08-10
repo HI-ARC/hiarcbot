@@ -6,6 +6,7 @@ import requests
 from slackbot.bot import respond_to
 
 from hiarcbot import bot, sched
+import slack_config
 
 # 여의도 관측소
 url = "http://apis.skplanetx.com/weather/summary?version=1&lat=37.5517109&lon=126.92611569999997&stnid=108"
@@ -14,7 +15,7 @@ headers = {
     "x-skpop-userId": "kodingwarrior",
     "Accept-Language": "ko_KR",
     "Accept": "application/json",
-    "appKey": os.getenv("WEATHER_PLANET_API_KEY")
+    "appKey": slack_config.WEATHER_PLANET_API_KEY
 }
 
 def get_weather_summary():
@@ -23,16 +24,16 @@ def get_weather_summary():
         return 'error'
 
     weather_report = ""
-    summary = json.loads(r.text)['weather']['summary']
-    weather_report += "[오늘의 날씨]\n(%s / 최고 온도 : %s도 , 최저 온도 : %s도)\n" % \
-                      (summary['today']['sky']['name'], summary['today']['temparature']['tmax'], summary['today']['temparature']['tmin'])
+    summary = json.loads(r.text)['weather']['summary'][0]
+    weather_report += "[오늘의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n" % \
+                      (summary['today']['sky']['name'], summary['today']['temperature']['tmin'], summary['today']['temperature']['tmax'])
 
-    weather_report += "[내일의 날씨]\n(%s / 최고 온도 : %s도 , 최저 온도 : %s도)\n" % \
-                      (summary['tomorrow']['sky']['name'], summary['tomorrow']['temparature']['tmax'], summary['tomorrow']['temparature']['tmin'])
+    weather_report += "[내일의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n" % \
+                      (summary['tomorrow']['sky']['name'], summary['tomorrow']['temperature']['tmin'], summary['tomorrow']['temperature']['tmax'])
 
-    weather_report += "[모레의 날씨]\n(%s / 최고 온도 : %s도 , 최저 온도 : %s도)\n" % \
-                      (summary['dayAfterTomorrow']['sky']['name'], summary['dayAfterTomorrow']['temparature']['tmax'],
-                       summary['dayAfterTomorrow']['temparature']['tmin'])
+    weather_report += "[모레의 날씨]\n(%s / 최저 온도 : %s도 , 최고 온도 : %s도)\n" % \
+                      (summary['dayAfterTomorrow']['sky']['name'], summary['dayAfterTomorrow']['temperature']['tmin'],
+                       summary['dayAfterTomorrow']['temperature']['tmax'])
 
     return weather_report
 
