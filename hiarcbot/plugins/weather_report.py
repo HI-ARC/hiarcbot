@@ -10,7 +10,7 @@ from hiarcbot import bot, sched
 # 여의도 관측소
 url = "http://apis.skplanetx.com/weather/summary?version=1&lat=37.5517109&lon=126.92611569999997&stnid=108"
 
-header = {
+headers = {
     "x-skpop-userId": "kodingwarrior",
     "Accept-Language": "ko_KR",
     "Accept": "application/json",
