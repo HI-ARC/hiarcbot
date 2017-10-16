@@ -20,7 +20,7 @@ data = {
 }
 
 def get_schoolcafe_menu():
-    r = requests.post(slack_config.SCHOOL_CAFE_API,
+    r = requests.post(url=slack_config.SCHOOL_CAFE_API,
                       headers=headers, payload=data)
     if r.status_code != 200:
         print("error")
