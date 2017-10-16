@@ -18,20 +18,21 @@ headers = {
     "appKey": slack_config.WEATHER_PLANET_API_KEY
 }
 
-def weather_status_with_emoji(s):
-    if s=='SKY_M01':
+def weather_status_with_emoji(status):
+    s = status[-2:]
+    if s=='01':
         return "맑음 :sunny:"
-    elif s=='SKY_M02':
+    elif s=='02':
         return "구름조금 :sun_small_cloud:"
-    elif s=='SKY_M03':
+    elif s=='03':
         return "구름많음 :sun_behind_cloud:"
-    elif s=='SKY_M04':
+    elif s=='04':
         return "흐림 :cloud:" 
-    elif s=='SKY_M05':
+    elif s=='05':
         return "비 :rain_cloud:"
-    elif s=='SKY_M06':
+    elif s=='06':
         return "눈 :snow_cloud:"
-    elif s=='SKY_M07':
+    elif s=='07':
         return "비 또는 눈 :rain_cloud: :snow_cloud:"
     else:
         return ":sunglasses:"

@@ -3,6 +3,8 @@ import re
 import json
 import requests
 
+from slackbot.bot import respond_to
+
 from hiarcbot import sched, bot
 import slack_config
 
