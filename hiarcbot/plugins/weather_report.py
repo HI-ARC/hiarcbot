@@ -9,7 +9,7 @@ from slackbot.bot import respond_to
 from hiarcbot import bot, sched
 import slack_config
 
-API_KEY = slack_config.OPEN_WEATHER_API_KEY,
+API_KEY = slack_config.OPEN_WEATHER_API_KEY
 
 '''
 def sky_code_to_message_with_emoji(code):
@@ -41,6 +41,10 @@ def help(message):
     weather_report = get_weather_summary()
     message.send(weather_report)
 
+@respond_to('^날씨요청$', re.IGNORECASE)
+def request_weather(message):
+    save_weather_report()
+
 @sched.scheduled_job('cron', hour=0, minute=0)
 def save_weather_report():
     weather_location = 'Yongsan,KR'
@@ -66,14 +70,14 @@ def save_weather_report():
         status_frequency[s] += 1
 
     result = "오늘의 날씨 - 최저 기온 {}'C / 최고 기온 {}'C {}".format( \
-                                                               min(temps) \
-                                                               max(temps) \
-                                                               max(status_frequency.items(), key=operator.itemgetter(1))[0])
+                                                                        min(temps), \
+                                                                        max(temps), \
+                                                                        max(status_frequency.items(), key=operator.itemgetter(1))[0])
 
     
-    with open('/tmp/weather_report', 'w') as f:
-        f.write(result)
-        f.close()
+    f = open('/tmp/weather_report', 'w')
+    f.write(result)
+    f.close()
         
 
 @sched.scheduled_job('cron', hour=7, minute=0)
