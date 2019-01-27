@@ -18,3 +18,4 @@ eggs
 venv
 __pycache__/
 slack_config.py
+docker-compose.yml
