@@ -9,6 +9,7 @@
 *.so
 *.tar.gz
 *~
+*.ipynb
 .DS_Store
 .Python
 .cache
