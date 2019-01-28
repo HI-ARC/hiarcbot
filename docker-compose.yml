@@ -1,6 +1,0 @@
-version: '2'
-services: 
-  bot: 
-    image: kodingwarrior/hi-arc-bot:0.2.2
-    environment:
-      BOT_API_TOKEN: <SENSORED>
