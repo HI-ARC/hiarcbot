@@ -9,6 +9,7 @@
 *.so
 *.tar.gz
 *~
+*.ipynb
 .DS_Store
 .Python
 .cache
@@ -18,3 +19,4 @@ eggs
 venv
 __pycache__/
 slack_config.py
+docker-compose.yml

@@ -1,8 +1,6 @@
 import os
-import slack_config
 
-API_TOKEN = slack_config.API_TOKEN
-# API_TOKEN = os.getenv('HIARC_SLACK_API_TOKEN')
+API_TOKEN = os.environ.get("BOT_API_TOKEN")
 
 DEFAULT_REPLY = "봇 테스트는 #bot-test 에서 해주세요"
 
@@ -12,6 +10,8 @@ PLUGINS = [
     'hiarcbot.plugins.help',
     'hiarcbot.plugins.ebook_notify',
     'hiarcbot.plugins.say_hello',
-    'hiarcbot.plugins.weather_report',
-    'hiarcbot.plugins.schoolcafe_menu'
+#	'hiarcbot.plugins.search_boj',
+	'hiarcbot.plugins.show_boj',
+#    'hiarcbot.plugins.weather_report',
+#    'hiarcbot.plugins.schoolcafe_menu'
 ]
